@@ -5,6 +5,7 @@ const cors = require("cors");
 
 const auth = require("./routes/auth");
 const productRoute = require("./routes/product.route");
+const userRoute = require("./routes/user.route");
 
 const PORT = 8080;
 const encodedPassword = encodeURIComponent(process.env.MONGO_PWD);
@@ -21,6 +22,7 @@ app.use(
 );
 
 app.use("/api/products", productRoute);
+app.use("/api/user", userRoute);
 
 mongoose.connect(`${BASE_MONGO_URI}${process.env.MONGO_URI}`).then(() => {
   console.log("CONNECTED");
