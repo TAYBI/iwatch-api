@@ -1,8 +1,11 @@
 const userModel = require("../models/user.model");
+const sha1 = require("sha1");
 
 exports.createUser = async (req, res) => {
   try {
-    const user = await userModel.create(req.body);
+    const password = sha1(req.body.password);
+    const user = await userModel.create({ ...req.body, password });
+
     res.status(200).json(user);
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });

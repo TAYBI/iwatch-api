@@ -27,6 +27,7 @@ app.use("/api/products", productRoute);
 app.use("/api/user", userRoute);
 app.use("/api/orders", orderRoute);
 app.use("/api/orderitem", orderItemRoute);
+app.use("/api/auth", auth);
 
 mongoose.connect(`${BASE_MONGO_URI}${process.env.MONGO_URI}`).then(() => {
   console.log("CONNECTED");
